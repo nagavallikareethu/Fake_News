@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.db
+*.sqlite
+*.pt
+*.pth
+*.bin
+models/
+checkpoints/
+logs/
+runs/
+outputs/
