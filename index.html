@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake News & Spam Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="user-info-box">
+  <div>👤 Logged in as: {{ session['username'] }}</div>
+  <div>👥 Total Visitors: {{ visitor_count }}</div>
+  <a href="{{ url_for('logout') }}" class="logout-btn-small">Logout</a>
+</div>
+
+<div class="page-center">
+  <div class="container">
+    <h2>Detection System</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="flash flash-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data" onsubmit="document.getElementById('loader-container')?.classList.add('active')">
+        <label>Content Type:</label>
+        <select name="content_type" required>
+            <option value="" {% if not content_type %}selected{% endif %}>Select</option>
+            <option value="Email" {% if content_type == "Email" %}selected{% endif %}>Email</option>
+            <option value="SMS" {% if content_type == "SMS" %}selected{% endif %}>SMS</option>
+            <option value="News Article" {% if content_type == "News Article" %}selected{% endif %}>News Article</option>
+            <option value="Social Media" {% if content_type == "Social Media" %}selected{% endif %}>Social Media</option>
+        </select>
+
+        <label>Enter Text:</label>
+        <textarea name="user_input" rows="5" cols="50">{{ request.form.get('user_input', extracted_text or '') }}</textarea>
+
+        <label>Or Upload PDF:</label>
+        <input type="file" name="pdf_file" accept=".pdf">
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if extracted_text %}
+  <div class="extracted-box">
+    <h4>📄 Extracted Text from PDF:</h4>
+    <pre class="extracted-text">{{ extracted_text }}</pre>
+  </div>
+{% elif pdf_error %}
+  <div class="extracted-error">
+    <strong>⚠ PDF extraction failed:</strong> {{ pdf_error }}
+  </div>
+{% endif %}
+
+
+    {% if prediction %}
+      <div class="{{ 'result-spam' if prediction.flag else 'result-not-spam' }}">
+        <h3>{{ prediction.channel }}: {{ prediction.bad if prediction.flag else prediction.ok }}</h3>
+        <p class="confidence">Confidence: {{ prediction.confidence }}%</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Optional overlay loader (used if you keep CSS for it) -->
+<div id="loader-container"><div class="loader"></div></div>
+
+</body>
+</html>

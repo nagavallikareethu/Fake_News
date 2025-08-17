@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading...</title>
+  <style>
+    body {
+      background: url("{{ url_for('static', filename='login_bg.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      color: #333;
+      margin: 0;
+    }
+    .loader-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      text-align: center;
+      max-width: 300px;
+    }
+    .loader img { width: 100px; height: 100px; }
+    .welcome { font-size: 16px; margin-top: 10px; color: #555; }
+    .text { margin-top: 15px; font-size: 18px; color: #333; }
+  </style>
+  <script>
+    setTimeout(function () { window.location.href = "{{ url_for('index') }}"; }, 3000);
+  </script>
+</head>
+<body>
+  <div class="loader-card">
+    <div class="loader">
+      <img src="{{ url_for('static', filename='loader.gif') }}" alt="Loading...">
+    </div>
+    <div class="welcome">Welcome, {{ session.get('username') }}</div>
+    <div class="text">Loading, please wait...</div>
+  </div>
+</body>
+</html>
