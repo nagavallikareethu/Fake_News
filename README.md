@@ -28,11 +28,11 @@ Built using **state-of-the-art Transformer models** (DistilBERT, MobileBERT, BER
 ## 🖼️ Screenshots  
 
 ### 🔐 Login Page  
-![Login Page]<img width="615" height="302" alt="image" src="https://github.com/user-attachments/assets/47efb129-d0f2-4b71-a7ab-c1b446ec431a" />
+<img width="615" height="302" alt="image" src="https://github.com/user-attachments/assets/47efb129-d0f2-4b71-a7ab-c1b446ec431a" />
 
 
 ### 🕵️ Detection Dashboard  
-![Detection Page]<img width="615" height="300" alt="image" src="https://github.com/user-attachments/assets/2157c245-003a-4efd-9f12-90a8eb97702e" />
+<img width="615" height="300" alt="image" src="https://github.com/user-attachments/assets/2157c245-003a-4efd-9f12-90a8eb97702e" />
  
 
 ---
