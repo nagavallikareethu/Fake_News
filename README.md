@@ -51,6 +51,7 @@ Built using **state-of-the-art Transformer models** (DistilBERT, MobileBERT, BER
 ---
 
 ## 📂 Project Structure  
+```bash
 
 ├── app.py # Main Flask Application
 ├── models/ # Fine-tuned models (DistilBERT, MobileBERT, BERT, RoBERTa)
@@ -59,6 +60,7 @@ Built using **state-of-the-art Transformer models** (DistilBERT, MobileBERT, BER
 ├── screenshots/ # Project Screenshots (login.png, detection.png)
 ├── requirements.txt # Python Dependencies
 └── README.md # Documentation
+```
 
 
 ---
@@ -72,17 +74,25 @@ cd Fake_News
 ```
 
 2️⃣ Create Virtual Environment
+```bash
 python -m venv venv
 venv\Scripts\activate      # On Windows
 source venv/bin/activate   # On Mac/Linux
+```
 
 3️⃣ Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
 4️⃣ Run the Flask App
+```bash
 python app.py
+```
 
 5️⃣ Open in Browser
+```bash
 http://127.0.0.1:5000
+```
 
 
